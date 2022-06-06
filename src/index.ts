@@ -1,13 +1,14 @@
 const $ = require("jquery");
 
-type modes = "words" | "chars";
+type mode = "words" | "chars";
+type modes = Array<mode>;
 
 export default class SplitText {
-  options: { WORDS: string; CHARS: string };
+  options: { WORDS: mode; CHARS: mode };
   words: string[];
   chars: string[];
   elements: HTMLElement;
-  modes: string;
+  modes: modes;
 
   constructor(element: HTMLElement, modes: modes) {
     // Options
