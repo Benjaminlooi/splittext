@@ -1,10 +1,16 @@
 {
-  "name": "splittext",
+  "name": "@benjaminlooi/splittext",
   "version": "1.0.0",
   "description": "GSAP SplitText clone",
-  "main": "index.js",
+  "main": "dist/my-lib.cjs.js",
+  "module": "dist/my-lib.esm.js",
+  "browser": "dist/my-lib.umd.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Benjamin Looi",
