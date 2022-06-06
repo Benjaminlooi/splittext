@@ -1,6 +1,6 @@
 {
   "name": "@benjaminlooi/splittext",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "GSAP SplitText clone",
   "module": "dist/my-lib.esm.js",
   "files": [
