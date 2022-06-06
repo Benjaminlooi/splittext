@@ -11,7 +11,9 @@
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:types": "tsc -p ./tsconfig.json --outDir build --declaration true && api-extractor run",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "typedoc src --out docs"
   },
   "author": "Benjamin Looi",
   "license": "ISC",
@@ -24,5 +26,9 @@
     "ts-node": "^10.8.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@microsoft/api-extractor": "^7.24.2",
+    "typedoc": "^0.22.17"
   }
 }
