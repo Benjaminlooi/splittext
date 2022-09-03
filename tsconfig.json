@@ -1,9 +1,14 @@
 {
+  "include": ["src/**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
     "strict": false,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "."
   }
 }

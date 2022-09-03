@@ -10,7 +10,7 @@ export default class SplitText {
   elements: HTMLElement;
   modes: modes;
 
-  constructor(element: HTMLElement, modes: modes) {
+  constructor(element: HTMLElement | string, modes: modes) {
     // Options
     this.options = {
       WORDS: "words",
@@ -43,27 +43,29 @@ export default class SplitText {
     $(element).empty();
 
     // Filter Each Text Nodes
-    $(textNodes).each((index: number, node) => {
+    $(textNodes).each((index: number, node: HTMLElement) => {
       // Split Text to words
-      const splittedWords = node.textContent.split(" ");
+      if (node.textContent) {
+        const splittedWords = node.textContent.split(" ");
 
-      // Add Splitted Words Array WhiteSpace
-      $(splittedWords.join(" @SPLITTED@").split("@SPLITTED@")).each(
-        (index, word) => {
-          let new_word = "";
-          if (word.slice(-1) == " ") {
-            new_word = word.trim();
-            nodes.push(new_word);
-            nodes.push(" ");
-          } else {
-            nodes.push(word.trim());
+        // Add Splitted Words Array WhiteSpace
+        $(splittedWords.join(" @SPLITTED@").split("@SPLITTED@")).each(
+          (index: number, word: string) => {
+            let new_word = "";
+            if (word.slice(-1) == " ") {
+              new_word = word.trim();
+              nodes.push(new_word);
+              nodes.push(" ");
+            } else {
+              nodes.push(word.trim());
+            }
           }
-        }
-      );
+        );
+      }
     });
 
     // Node Loop
-    $(nodes).each((index, node) => {
+    $(nodes).each((index: number, node: string) => {
       // If Node's last character is whitespace
       if (node.slice(-1) == " ") {
         $(element).append(" ");
@@ -107,8 +109,6 @@ export default class SplitText {
 
     // Kill what's inside the element
     $(element).empty();
-
-    // Paster - Puldan Baha => Listen it, good music ;)
 
     // Filter Each Nodes With "each" Loop
     $(textNodes).each((index, node) => {
